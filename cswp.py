@@ -15,7 +15,7 @@ from PIL import Image, ImageOps
 # Caching the model loading
 @st.cache_resource
 def load_model():
-    model = tf.keras.models.load_model('CS_WP_Deployment2.h5')
+    model = tf.keras.models.load_model('plant_classifier.hdf5')
     return model
 
 model = load_model()
@@ -34,7 +34,8 @@ def import_and_predict(image_data, model):
 
     # Convert to grayscale if necessary
     if img.ndim == 3 and img.shape[2] == 3:
-        img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+        image = image.convert('L')
+        img = np.asarray(image)
 
     # Normalize the image
     img = img / 255.0
