@@ -30,18 +30,18 @@ def import_and_predict(image_data, model):
     size = (128, 128)
     # Resize image
     image = ImageOps.fit(image_data, size, Image.LANCZOS)
-    img = np.asarray(image)
 
-    # Convert to grayscale if necessary
-    if img.ndim == 3 and img.shape[2] == 3:
-        image = image.convert('L')
-        img = np.asarray(image)
+    # Ensure image has 3 channels
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+
+    img = np.asarray(image)
 
     # Normalize the image
     img = img / 255.0
 
     # Reshape the image for the model
-    img_reshape = img.reshape((1, 128, 128, 1))
+    img_reshape = img.reshape((1, 128, 128, 3))
 
     # Predict
     prediction = model.predict(img_reshape)
