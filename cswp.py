@@ -27,7 +27,7 @@ st.write("""
 file = st.file_uploader("Choose a weather image from computer", type=["jpg", "png"])
 
 def import_and_predict(image_data, model):
-    size = (128, 128)
+    size = (150, 150)
     # Resize image
     image = ImageOps.fit(image_data, size, Image.LANCZOS)
 
