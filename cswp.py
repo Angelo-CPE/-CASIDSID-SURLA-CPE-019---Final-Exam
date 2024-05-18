@@ -41,7 +41,7 @@ def import_and_predict(image_data, model):
     img = img / 255.0
 
     # Reshape the image for the model
-    img_reshape = img.reshape((1, 128, 128, 3))
+    img_reshape = img.reshape((1, 150, 150, 3))
 
     # Predict
     prediction = model.predict(img_reshape)
