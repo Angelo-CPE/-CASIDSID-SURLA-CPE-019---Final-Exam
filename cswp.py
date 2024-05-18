@@ -12,7 +12,7 @@ import tensorflow as tf
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-  model=tf.keras.models.load_model('plant_classifier.hdf5')
+  model=tf.keras.models.load_model('CS_WP_Deployment2.h5')
   return model
 model=load_model()
 st.write("""
